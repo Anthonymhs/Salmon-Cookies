@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+header {
+    background-color: #f3f3f3;
+    padding: 10px 20px;
+    text-align: center;
+}
+nav {
+    background-color: #c1e1ec;
+    padding: 10px 20px;
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    padding: 8px 15px;
+    border: 1px solid transparent;
+}
+nav a:hover {
+    border: 1px solid black;
+}
+#locations {
+    margin: 20px;
+    padding: 20px;
+}
+.location {
+    margin-bottom: 20px;
+}
