@@ -65,3 +65,30 @@ footer {
     border-radius: 2%;
 }
 
+
+section#tabla {
+    width: 50wv;
+    margin: 20px auto;
+}
+
+section#tabla thead {
+    background-color: gray;
+    color: white;
+    
+}
+
+section#tabla table {
+    width: 100%;
+}
+
+section#tabla tbody {
+    background-color: salmon;
+}
+
+section#tabla td {
+    border: 1px solid black;
+}
+section #tabla tr {
+    background-color: grey;
+    color: #f9f9f9;
+}
