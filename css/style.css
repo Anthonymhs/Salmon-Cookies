@@ -32,7 +32,7 @@ nav{
     padding: 14px 20px; 
     text-decoration: none; 
     font-size: 17px; 
-    transition: box-shadow 0.3s;
+    transition: box-shadow 1s;
 }
 nav a{
     margin: 15px;
@@ -62,5 +62,33 @@ footer {
     height: 80px;
     padding-top: 50px;
     font-weight: bold;
+    border-radius: 2%;
 }
 
+
+section#tabla {
+    width: 50wv;
+    margin: 20px auto;
+}
+
+section#tabla thead {
+    background-color: gray;
+    color: white;
+    
+}
+
+section#tabla table {
+    width: 100%;
+}
+
+section#tabla tbody {
+    background-color: salmon;
+}
+
+section#tabla td {
+    border: 1px solid black;
+}
+section #tabla tr {
+    background-color: grey;
+    color: #f9f9f9;
+}
