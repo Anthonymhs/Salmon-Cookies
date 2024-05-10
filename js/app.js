@@ -84,7 +84,7 @@ const dubai = new CookieLocation('Dubai', 11, 38, 3.7);
 const paris = new CookieLocation('París', 20, 38, 2.3);
 const lima = new CookieLocation('Lima', 2, 16, 4.6);
 
-const horas = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+const horas = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Locations Total'];
 const stores = [seattle, tokio, dubai, paris, lima];
 
 function random(min, max) {
@@ -104,6 +104,40 @@ function estimateSales(store) {
 const table = document.querySelector("section#tabla table");
 const thead = table.querySelector("thead");
 const tbody = table.querySelector("tbody");
+const tfoot = table.querySelector("tfoot");
+
+const inputLocationName=document.getElementById("locationName");
+const inputMinCustPerHour=document.getElementById("minCustPerHour");
+const inputMaxCustPerHour=document.getElementById("maxCustPerHour");
+const inputAverageCustomerPerHour=document.getElementById("averageCustPerHour");
+
+const buttonAdd=document.getElementById("agregarDatos");
+
+buttonAdd.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (!inputLocationName.value || !inputMinCustPerHour.value || !inputMaxCustPerHour.value || !inputAverageCustomerPerHour.value)
+    return;
+
+  const newLocation = new CookieLocation(
+    inputLocationName.value,
+    parseInt(inputMinCustPerHour.value),
+    parseInt(inputMaxCustPerHour.value),
+    parseFloat(inputAverageCustomerPerHour.value)
+  );
+
+  newLocation.estimate();
+  stores.push(newLocation);
+
+  const trow = newLocation.renderFilas();
+  tbody.appendChild(trow);
+
+  const currentTr = tfoot.querySelector("tr");
+  if (currentTr) {
+    tfoot.removeChild(currentTr);
+  }
+  renderCrearFilaPie();
+});
 
 function crearFilaEncabezado() {
   const tr = document.createElement("tr");
@@ -123,21 +157,21 @@ function crearFilaPie() {
   const tdTotal = document.createElement("td");
   tdTotal.textContent = "Total";
   tr.appendChild(tdTotal);
-  let totalGeneral = 0;
   for (let i = 0; i < horas.length; i++) {
     let totalHora = 0;
-    for (let j = 0; j < stores.length; j++) {
-      totalHora += stores[j].cookiesEachHour[i];
+    for (let i = 0; i < stores.length; i++) {
+      totalHora += stores[i].cookiesEachHour[i];
     }
     const tdHora = document.createElement("td");
     tdHora.textContent = totalHora;
     tr.appendChild(tdHora);
-    totalGeneral += totalHora;
   }
-  const tdTotalGeneral = document.createElement("td");
-  tdTotalGeneral.textContent = totalGeneral;
-  tr.appendChild(tdTotalGeneral);
   return tr;
+}
+
+function renderCrearFilaPie() {
+  const tr = crearFilaPie();
+  tfoot.appendChild(tr);
 }
 
 function mostrarTiendas() {
@@ -150,8 +184,7 @@ function mostrarTiendas() {
 
 thead.appendChild(crearFilaEncabezado());
 mostrarTiendas();
-tbody.appendChild(crearFilaPie());
-
+renderCrearFilaPie();
 
 
 
