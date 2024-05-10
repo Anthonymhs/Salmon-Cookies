@@ -101,7 +101,7 @@ function estimateSales(store) {
   return sales;
 }
 
-const table = document.querySelector("section#tabla table");
+const table = document.querySelector('section#tabla table');
 const thead = table.querySelector("thead");
 const tbody = table.querySelector("tbody");
 const tfoot = table.querySelector("tfoot");
@@ -113,7 +113,7 @@ const inputAverageCustomerPerHour=document.getElementById("averageCustPerHour");
 
 const buttonAdd=document.getElementById("agregarDatos");
 
-buttonAdd.addEventListener("click", function (event) {
+buttonAdd.addEventListener('click', function (event) {
   event.preventDefault();
 
   if (!inputLocationName.value || !inputMinCustPerHour.value || !inputMaxCustPerHour.value || !inputAverageCustomerPerHour.value)
